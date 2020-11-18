@@ -44,8 +44,8 @@ RSpec.describe Task, type: :model do
   end
 
   it 'Should not be able to use a negative order' do
-    subject.order_index = -1
-    expect(subject).to be_invalid
+    subject.update(order_index: -1)
+    expect(subject.order_index).to eq(0)
   end
 
   it 'Should increment the task order_index regarding the other user task' do
@@ -55,7 +55,7 @@ RSpec.describe Task, type: :model do
     expect(second_task.order_index).to eq(1)
   end
 
-  it 'Should shift related user task order_indexes if needed' do
+  it 'Should shift related user task order_indexes on task creation if needed' do
     first_task = described_class.create(title: 'My 1st todo task test', user_id: user.id)
     expect(first_task.order_index).to eq(0)
     second_task = described_class.create(title: 'My 2nd todo task test', user_id: user.id)
@@ -66,5 +66,19 @@ RSpec.describe Task, type: :model do
     expect(second_task.order_index).to eq(0)
     first_task.reload
     expect(first_task.order_index).to eq(1)
+  end
+
+  it 'Should shift related user task order_indexes on task deletion if needed' do
+    first_task = described_class.create(title: 'My 1st todo task test', user_id: user.id)
+    expect(first_task.order_index).to eq(0)
+    second_task = described_class.create(title: 'My 2nd todo task test', user_id: user.id)
+    expect(second_task.order_index).to eq(1)
+    third_task = described_class.create(title: 'My 3rd todo task test', user_id: user.id)
+    expect(third_task.order_index).to eq(2)
+    second_task.destroy
+    first_task.reload
+    third_task.reload
+    expect(first_task.order_index).to eq(0)
+    expect(third_task.order_index).to eq(1)
   end
 end

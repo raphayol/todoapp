@@ -26,5 +26,9 @@ table
           = task.done
         td
           = link_to 'Delete', destroy_task_path(id: task.id), method: :delete
+          .up-btn
+            = link_to 'Up', update_task_path(id: task.id, task: { order_index: task.order_index - 1}), method: :post
+          .down-btn
+            = link_to 'Down', update_task_path(id: task.id, task: { order_index: task.order_index + 1}), method: :post
 
 = link_to 'Add a new task', new_task_path

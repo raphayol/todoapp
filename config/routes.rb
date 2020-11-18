@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/tasks', to: 'tasks#index'
   get '/tasks/new', to: 'tasks#new', as: 'new_task'
   post '/tasks', to: 'tasks#create', as: 'task'
+  post '/tasks/:id', to: 'tasks#update', as: 'update_task'
   delete '/tasks', to: 'tasks#destroy', as: 'destroy_task'
 
   root 'tasks#index'

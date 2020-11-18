@@ -15,11 +15,28 @@ RSpec.describe 'Order a Task', type: :feature do
     Task.create(title: 'Second task test', user: user)
   end
 
-  scenario 'should change task order on index page' do
+  scenario 'should have a correct order on index page' do
     visit tasks_path
-    click_on 'up'
+    expect(page).to have_content('First task test')
+    expect(page).to have_content('Second task test')
+    first_index = page.body.index('First task test')
+    second_index = page.body.index('Second task test')
+    expect(first_index).to be < second_index
+  end
 
-    # TODO: Find a way to check task order on the page
+  scenario 'should change task order on index page when clicking on up' do
+    visit tasks_path
+    all('.up-btn')[1].find_link.click
+    first_index = page.body.index('Second task test')
+    second_index = page.body.index('First task test')
+    expect(first_index).to be < second_index
+  end
 
+  scenario 'should change task order on index page when clicking on down' do
+    visit tasks_path
+    all('.down-btn')[0].find_link.click
+    first_index = page.body.index('Second task test')
+    second_index = page.body.index('First task test')
+    expect(first_index).to be < second_index
   end
 end
