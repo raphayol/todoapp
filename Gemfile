@@ -33,7 +33,13 @@ gem 'rubocop', require: false
 # Authentication solution
 gem 'devise'
 
+# Html Template
+gem 'slim'
+
 group :development, :test do
+  # erb to slim converter
+  gem 'html2slim'
+
   # Annotate model
   gem 'annotate'
 

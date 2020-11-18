@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'db/**/*'
+    - 'app/views/**/*'
     - 'lib/**/*'
     - 'node_modules/**/*'
     - 'config/initializers/devise.rb'

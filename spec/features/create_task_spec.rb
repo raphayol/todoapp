@@ -2,7 +2,18 @@
 
 require 'rails_helper'
 
+
 RSpec.describe 'Create a Task', type: :feature do
+  include Devise::Test::IntegrationHelpers
+
+  let(:user) do
+    User.create(email: "test@user.com", password: "password", password_confirmation: "password")
+  end
+
+  before(:each) do
+    sign_in user
+  end
+
   scenario 'with valid input' do
     visit new_task_path
     fill_in 'Title', with: 'Title test'
