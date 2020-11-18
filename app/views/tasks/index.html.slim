@@ -12,6 +12,6 @@ table
         td
           = task.title
         td
-          = link_to 'Delete', destroy_task_path(task.id)
+          = link_to 'Delete', destroy_task_path(id: task.id), method: :delete
 
 = link_to 'Add a new task', new_task_path

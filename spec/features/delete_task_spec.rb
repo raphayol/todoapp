@@ -6,7 +6,7 @@ RSpec.describe 'Delete a Task', type: :feature do
   include Devise::Test::IntegrationHelpers
 
   let(:user) do
-    User.create(email: "test@user.com", password: "password", password_confirmation: "password")
+    User.create(email: 'test@user.com', password: 'password', password_confirmation: 'password')
   end
 
   before(:each) do
