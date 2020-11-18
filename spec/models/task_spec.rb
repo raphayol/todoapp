@@ -18,7 +18,7 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   let(:user) do
-    User.create(email: 'user@test.com')
+    User.create(email: 'user@test.com', password: 'password_test', password_confirmation: 'password_test')
   end
 
   subject do
@@ -55,7 +55,7 @@ RSpec.describe Task, type: :model do
     expect(second_task.order_index).to eq(1)
   end
 
-  it 'Should shift related user task order_indexs if needed' do
+  it 'Should shift related user task order_indexes if needed' do
     first_task = described_class.create(title: 'My 1st todo task test', user_id: user.id)
     expect(first_task.order_index).to eq(0)
     second_task = described_class.create(title: 'My 2nd todo task test', user_id: user.id)

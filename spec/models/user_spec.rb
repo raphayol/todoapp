@@ -22,7 +22,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject do
-    described_class.new(email: 'test@test.com')
+    described_class.new(email: 'test@test.com', password: 'password_test', password_confirmation: 'password_test')
   end
 
   it 'Should be valid with a valid email' do
