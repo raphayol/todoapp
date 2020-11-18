@@ -40,12 +40,3 @@ Rails 6.0.3.4
 
 * ...
 
-TODO
-
-Models
-
-User  id:uuid email:string
-Task  id:uuid user_id:uuid title:string description:text due_date:datetime done:boolean order:int
-
-
-

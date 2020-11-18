@@ -3,6 +3,7 @@ AllCops:
     - 'db/**/*'
     - 'lib/**/*'
     - 'node_modules/**/*'
+    - 'config/initializers/devise.rb'
   NewCops: enable
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']

@@ -30,6 +30,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Static code analyzer/formatter
 gem 'rubocop', require: false
 
+# Authentication solution
+gem 'devise'
+
 group :development, :test do
   # Annotate model
   gem 'annotate'
