@@ -5,12 +5,25 @@ table
     tr
       th
         | Currents tasks
-      th[colspan="3"]
+      th
+        | Description
+      th
+        | Order
+      th
+        | Status
+      th
+        | Actions
   tbody
     - @tasks.each do |task|
       tr
         td
           = task.title
+        td
+          = task.description
+        td
+          = task.order_index
+        td
+          = task.done
         td
           = link_to 'Delete', destroy_task_path(id: task.id), method: :delete
 

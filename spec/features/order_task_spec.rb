@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Delete a Task', type: :feature do
+RSpec.describe 'Order a Task', type: :feature do
   include Devise::Test::IntegrationHelpers
 
   let(:user) do
@@ -11,13 +11,15 @@ RSpec.describe 'Delete a Task', type: :feature do
 
   before(:each) do
     sign_in user
-    Task.create(title: 'Title test', user: user)
+    Task.create(title: 'First task test', user: user)
+    Task.create(title: 'Second task test', user: user)
   end
 
-  scenario 'should remove the task from index page' do
+  scenario 'should change task order on index page' do
     visit tasks_path
-    click_on 'Delete'
-    expect(page).to have_content('Task successfully deleted')
-    expect(page).not_to have_content('Title test')
+    click_on 'up'
+
+    # TODO: Find a way to check task order on the page
+
   end
 end

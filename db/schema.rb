@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_160020) do
     t.string "title"
     t.text "description"
     t.datetime "due_date"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.integer "order_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -6,7 +6,7 @@
 #
 #  id          :uuid             not null, primary key
 #  description :text
-#  done        :boolean
+#  done        :boolean          default(FALSE)
 #  due_date    :datetime
 #  order_index :integer
 #  title       :string
