@@ -27,9 +27,7 @@ Rails 6.0.3.4
 * Configuration
 
 * Database creation
-`rails db:create`
-`rails db:migrate`
-* Database initialization
+`rails db:migrate:reset`
 
 * How to run the test suite
 
@@ -41,3 +39,13 @@ Rails 6.0.3.4
 `git commit; git push heroku master`
 
 * ...
+
+TODO
+
+Models
+
+User  id:uuid email:string
+Task  id:uuid user_id:uuid title:string description:text due_date:datetime done:boolean order:int
+
+
+
