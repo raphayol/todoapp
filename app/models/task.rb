@@ -18,8 +18,9 @@ class Task < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+  validates :order_index, numericality: { greater_than_or_equal_to: 0 }
 
-  before_save :set_default_order
+  before_validation :set_default_order
   after_save :shift_order
 
   private
