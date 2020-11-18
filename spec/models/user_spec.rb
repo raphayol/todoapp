@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -10,22 +12,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject {
+  subject do
     described_class.new(email: 'test@test.com')
-  }
+  end
 
-  it "Should be valid with a valid email" do
+  it 'Should be valid with a valid email' do
     expect(subject).to be_valid
   end
 
-  it "Should not be valid with a blank email" do
-    subject.email = ""
+  it 'Should not be valid with a blank email' do
+    subject.email = ''
     expect(subject).to be_invalid
   end
 
-  it "Should not be valid with a bad format email address" do
-    subject.email = "invalidformat"
+  it 'Should not be valid with a bad format email address' do
+    subject.email = 'invalidformat'
     expect(subject).to be_invalid
   end
-
 end
