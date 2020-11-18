@@ -4,6 +4,8 @@ AllCops:
     - 'lib/**/*'
     - 'node_modules/**/*'
   NewCops: enable
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
 Lint/DuplicateBranch:
   Enabled: true
 Lint/DuplicateRegexpCharacterClassElement:

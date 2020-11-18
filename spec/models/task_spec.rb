@@ -5,11 +5,10 @@
 # Table name: tasks
 #
 #  id          :uuid             not null, primary key
-#  Task        :string
 #  description :text
 #  done        :boolean
 #  due_date    :datetime
-#  order       :integer
+#  order_index :integer
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -23,7 +22,7 @@ RSpec.describe Task, type: :model do
   end
 
   subject do
-    described_class.new(title: 'test@test.com', user_id: user.id)
+    described_class.create(title: 'My 1st todo task test', user_id: user.id)
   end
 
   it 'Should be valid with a user and a title' do
@@ -36,7 +35,31 @@ RSpec.describe Task, type: :model do
   end
 
   it 'Should not be valid without associated user' do
-    subject.user = nil
+    subject.user_id = nil
     expect(subject).to be_invalid
+  end
+
+  it 'Should set the task order automatically' do
+    expect(subject.order_index).to eq(0)
+  end
+
+  it 'Should increment the task order_index regarding the other user task' do
+    first_task = described_class.create(title: 'My 1st todo task test', user_id: user.id)
+    expect(first_task.order_index).to eq(0)
+    second_task = described_class.create(title: 'My 2nd todo task test', user_id: user.id)
+    expect(second_task.order_index).to eq(1)
+  end
+
+  it 'Should shift related user task order_indexs if needed' do
+    first_task = described_class.create(title: 'My 1st todo task test', user_id: user.id)
+    expect(first_task.order_index).to eq(0)
+    second_task = described_class.create(title: 'My 2nd todo task test', user_id: user.id)
+    expect(second_task.order_index).to eq(1)
+    second_task.update_attributes(order_index: 0)
+    expect(second_task).to be_valid
+    expect(first_task).to be_valid
+    expect(second_task.order_index).to eq(0)
+    first_task.reload
+    expect(first_task.order_index).to eq(1)
   end
 end

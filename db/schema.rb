@@ -17,13 +17,12 @@ ActiveRecord::Schema.define(version: 2020_11_18_135713) do
   enable_extension "plpgsql"
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "Task"
     t.uuid "user_id"
     t.string "title"
     t.text "description"
     t.datetime "due_date"
     t.boolean "done"
-    t.integer "order"
+    t.integer "order_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
