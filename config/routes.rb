@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get '/home', to: 'home#index'
+  get '/tasks', to: 'tasks#index'
+  get '/tasks/new', to: 'tasks#new', as: 'new_task'
+  post '/tasks', to: 'tasks#create', as: 'task'
 
-  root 'home#index'
+  root 'tasks#index'
 end
