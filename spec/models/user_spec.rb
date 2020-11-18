@@ -29,4 +29,10 @@ RSpec.describe User, type: :model do
     subject.email = 'invalidformat'
     expect(subject).to be_invalid
   end
+
+  it 'Remove a user should remove associated tasks' do
+    task = Task.create(title: 'test task', user: subject)
+    subject.destroy
+    expect(Task.exists?(task.id)).to eq(false)
+  end
 end
