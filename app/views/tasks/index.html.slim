@@ -1,5 +1,5 @@
 h1
-  |  Welcome to your TODO app 
+  |  Welcome to your TODO app
 table
   thead
     tr
@@ -11,4 +11,7 @@ table
       tr
         td
           = task.title
+        td
+          = link_to 'Delete', destroy_task_path(task.id)
+
 = link_to 'Add a new task', new_task_path

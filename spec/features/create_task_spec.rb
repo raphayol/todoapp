@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-
 RSpec.describe 'Create a Task', type: :feature do
   include Devise::Test::IntegrationHelpers
 
