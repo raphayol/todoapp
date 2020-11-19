@@ -36,6 +36,9 @@ gem 'devise'
 # Html Template
 gem 'slim'
 
+# Frontend framework
+gem 'materialize-sass', '~> 1.0.0'
+
 group :development, :test do
   # erb to slim converter
   gem 'html2slim'

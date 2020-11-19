@@ -1,5 +1,5 @@
-h1
-  |  Welcome to your TODO app
+h2.center
+  |  My tasks
 table
   thead
     tr
@@ -43,4 +43,7 @@ table
           .down-btn
             = link_to 'Down', update_task_path(id: task.id, task: { order_index: task.order_index + 1}), method: :post
 
-= link_to 'Add a new task', new_task_path
+br
+
+a.btn-floating.waves-effect.waves-light href=(new_task_path)
+  i.material-icons playlist_add
