@@ -11,8 +11,9 @@ table
         | Order
       th
         | Status
-      th
+      th[colspan="4"]
         | Actions
+
   tbody
     - @tasks.each do |task|
       tr
@@ -23,11 +24,22 @@ table
         td
           = task.order_index
         td
-          = task.done
+          - if task.done
+            | Done
+          - else
+            | Pending
+
+        td
+          - if task.done
+            = link_to 'Uncheck', update_task_path(id: task.id, task: { done: false }), method: :post
+          - else
+            = link_to 'Check', update_task_path(id: task.id, task: { done: true }), method: :post
         td
           = link_to 'Delete', destroy_task_path(id: task.id), method: :delete
+        td
           .up-btn
             = link_to 'Up', update_task_path(id: task.id, task: { order_index: task.order_index - 1}), method: :post
+        td
           .down-btn
             = link_to 'Down', update_task_path(id: task.id, task: { order_index: task.order_index + 1}), method: :post
 

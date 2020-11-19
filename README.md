@@ -15,28 +15,41 @@ Nice to have stories (in order):
 - As a user, I get reminded by email when a todo is past due
 - As a user, I can create nested todo
 
-Things you may want to cover:
+#### Ruby version
+ruby 2.7.0
 
-* Ruby version
-
-ruby 2.7.0p0
+#### Rails veresion
 Rails 6.0.3.4
 
-* System dependencies
+#### Install dependencies
 
-* Configuration
+`bundle install`
 
-* Database creation
+#### Database creation
+
+`rails db:create`
+`rails db:migrate`
+
+or
+
 `rails db:migrate:reset`
 
-* How to run the test suite
+#### Run server in development environment
+
+`rails s`
+
+#### How to run the test suite
 
 `bundle exec rspec`
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Deployment instructions
 
-* Deployment instructions
-`git commit; git push heroku master`
+`git commit`
+`git push heroku master`
+`heroku run rake db:migrate`
 
-* ...
+#### Check code for security and style
 
+`rubocop`
+
+Make sure your text editor use the .editorconfig
