@@ -8,8 +8,6 @@ table
       th
         | Description
       th
-        | Order
-      th
         | Status
       th[colspan="4"]
         | Actions
@@ -21,8 +19,6 @@ table
           = task.title
         td
           = task.description
-        td
-          = task.order_index
         td
           - if task.done
             | Done
