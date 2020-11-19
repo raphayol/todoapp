@@ -1,5 +1,7 @@
 # README
 
+### Purpose of the application
+
 This is a very simple, web based, to-do application. This would be something that could substitute using a sticky and pen. The time limit is 5 hours (so till around 6:30PM on the Paris Timezone).
 
 Required Stories:
@@ -15,17 +17,19 @@ Nice to have stories (in order):
 - As a user, I get reminded by email when a todo is past due
 - As a user, I can create nested todo
 
-#### Ruby version
-ruby 2.7.0
+### Versions
 
-#### Rails veresion
-Rails 6.0.3.4
+Ruby 2.7.0
 
-#### Install dependencies
+Rails  6.0.3.4
+
+Refer to Gemfile and Gemfile.lock for further information
+
+### Install dependencies
 
 `bundle install`
 
-#### Database creation
+### Database creation
 
 `rails db:create`
 `rails db:migrate`
@@ -34,21 +38,21 @@ or
 
 `rails db:migrate:reset`
 
-#### Run server in development environment
+### Run server in development environment
 
 `rails s`
 
-#### How to run the test suite
+### How to run the test suite
 
 `bundle exec rspec`
 
-#### Deployment instructions
+### Deployment instructions
 
 `git commit`
 `git push heroku master`
 `heroku run rake db:migrate`
 
-#### Check code for security and style
+### Check code for security and style
 
 `rubocop`
 
